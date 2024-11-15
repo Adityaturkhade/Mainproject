@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add Car Model</h1>
+<a href="{% url 'item_create' %}" class="btn btn-primary">Add Item</a>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Car Name</th>
+            <th>Car <br> Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody style="background-image: url('C:\Users\Aditya\Downloads\31_08_2023-maruti_suzuki_arena__23518109.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+       
+    </tbody>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>
+                <a href="{% url 'item_detail' item.pk %}" class="btn btn-info">View</a>
+                <a href="{% url 'item_update' item.pk %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'item_delete' item.pk %}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
